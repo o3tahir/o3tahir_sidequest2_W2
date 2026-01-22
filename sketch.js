@@ -4,35 +4,35 @@ let floorY3;
 // Player character (soft, animated blob)
 let blob3 = {
   // Position (centre of the blob)
-  x: 80,
+  x: 100,
   y: 0,
 
   // Visual properties
   r: 26, // Base radius
-  points: 48, // Number of points used to draw the blob
-  wobble: 7, // Edge deformation amount
-  wobbleFreq: 0.9,
+  points: 80, // Number of points used to draw the blob
+  wobble: 23, // Edge deformation amount
+  wobbleFreq: 2.7,
 
   // Time values for breathing animation
   t: 0,
-  tSpeed: 0.01,
+  tSpeed: 0.046,
 
   // Physics: velocity
-  vx: 0, // Horizontal velocity
-  vy: 0, // Vertical velocity
+  vx: 2, // Horizontal velocity
+  vy: 2, // Vertical velocity
 
   // Movement tuning
-  accel: 0.55, // Horizontal acceleration
-  maxRun: 4.0, // Maximum horizontal speed
-  gravity: 0.65, // Downward force
-  jumpV: -11.0, // Initial jump impulse
+  accel: 0.8, // Horizontal acceleration
+  maxRun: 3.2, // Maximum horizontal speed
+  gravity: 0.9, // Downward force
+  jumpV: -14.0, // Initial jump impulse
 
   // State
   onGround: false, // True when standing on a platform
 
   // Friction
-  frictionAir: 0.995, // Light friction in air
-  frictionGround: 0.88, // Stronger friction on ground
+  frictionAir: 0, // Light friction in air
+  frictionGround: 0.8, // Stronger friction on ground
 };
 
 // List of solid platforms the blob can stand on
@@ -63,10 +63,10 @@ function setup() {
 }
 
 function draw() {
-  background(240);
+  background(128, 0, 128);
 
   // --- Draw all platforms ---
-  fill(200);
+  fill(255, 91, 0);
   for (const p of platforms) {
     rect(p.x, p.y, p.w, p.h);
   }
@@ -154,7 +154,7 @@ function overlap(a, b) {
 
 // Draws the blob using Perlin noise for a soft, breathing effect
 function drawBlobCircle(b) {
-  fill(20, 120, 255);
+  fill(255, 255, 0);
   beginShape();
 
   for (let i = 0; i < b.points; i++) {
